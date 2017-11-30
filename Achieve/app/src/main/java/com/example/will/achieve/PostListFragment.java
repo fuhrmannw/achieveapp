@@ -11,6 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.will.achieve.AsyncTasks.GetFeedAsync;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +25,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class PostListFragment extends Fragment {
+public class PostListFragment extends Fragment implements GetFeedAsync.FeedHandler  {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -27,6 +33,7 @@ public class PostListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
+    private RecyclerView recyclerView;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -51,6 +58,7 @@ public class PostListFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+        new GetFeedAsync(1, this).execute();
     }
 
     @Override
@@ -61,15 +69,15 @@ public class PostListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<Post> posts = Global.getInstance().getPostList();
-            Log.i("Posts", posts.size() + "");
-            recyclerView.setAdapter(new MyPostListRecyclerViewAdapter(posts, mListener));
+//            List<Post> posts = Global.getInstance().getPostList();
+//            Log.i("Posts", posts.size() + "");
+//            recyclerView.setAdapter(new MyPostListRecyclerViewAdapter(posts, mListener));
         }
         return view;
     }
@@ -105,6 +113,24 @@ public class PostListFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Post item);
-        void setRecyclerView(RecyclerView v);
+    }
+
+    @Override
+    public void handleFeedResult(JSONObject result) {
+        if(result != null) {
+            Log.i("Result", result.toString());
+            try {
+                JSONArray arr = result.getJSONArray("posts");
+                List<Post> posts = new ArrayList<>();
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject json = arr.getJSONObject(i);
+                    posts.add(new Post(json));
+                }
+                MyPostListRecyclerViewAdapter adapter = new MyPostListRecyclerViewAdapter(posts, mListener);
+                recyclerView.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

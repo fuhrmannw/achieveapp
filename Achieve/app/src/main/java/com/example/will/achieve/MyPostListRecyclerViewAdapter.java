@@ -4,12 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.will.achieve.AsyncTasks.LikePostAsync;
 import com.example.will.achieve.PostListFragment.OnListFragmentInteractionListener;
 import com.example.will.achieve.dummy.DummyContent.DummyItem;
 
 import java.util.List;
+
+import static com.example.will.achieve.R.id.likes;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -41,6 +45,15 @@ public class MyPostListRecyclerViewAdapter extends RecyclerView.Adapter<MyPostLi
         holder.author.setText(post.getPoster());
         holder.likes.setText("Likes: " + post.getLikes());
 
+        holder.likesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.post.likes += 1;
+                holder.likes.setText("Likes: " + holder.post.getLikes());
+                new LikePostAsync(holder.post.id).execute();
+            }
+        });
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +76,7 @@ public class MyPostListRecyclerViewAdapter extends RecyclerView.Adapter<MyPostLi
         public final TextView content;
         public final TextView author;
         public final TextView likes;
+        public final Button likesBtn;
 
         public Post post;
 
@@ -72,6 +86,7 @@ public class MyPostListRecyclerViewAdapter extends RecyclerView.Adapter<MyPostLi
             content = (TextView) view.findViewById(R.id.post);
             author = (TextView) view.findViewById(R.id.poster);
             likes = (TextView) view.findViewById(R.id.likes);
+            likesBtn = (Button) view.findViewById(R.id.likeButton);
         }
 
         @Override

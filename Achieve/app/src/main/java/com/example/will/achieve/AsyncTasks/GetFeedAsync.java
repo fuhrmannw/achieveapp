@@ -1,6 +1,7 @@
 package com.example.will.achieve.AsyncTasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.will.achieve.ServerRequest;
 
@@ -12,28 +13,29 @@ import org.json.JSONObject;
 
 public class GetFeedAsync extends AsyncTask<Void, Void, JSONObject> {
 
-    private String userId;
+    private int userId;
 
-    private ResultHandler handler;
+    private FeedHandler handler;
 
-    public GetFeedAsync(String userId, ResultHandler resultHandler) {
+    public GetFeedAsync(int userId, FeedHandler resultHandler) {
         this.userId = userId;
         this.handler = resultHandler;
     }
 
     @Override
     protected JSONObject doInBackground(Void... params) {
+        Log.i("GetFeedAsync", "Getting Feed for user " + userId);
         ServerRequest connection = new ServerRequest(null, "/post/feed/" + userId, true);
         return connection.sendRequest();
     }
 
     @Override
     protected void onPostExecute(JSONObject result){
-        handler.handleResult(result);
+        handler.handleFeedResult(result);
     }
 
-    public interface ResultHandler{
-        public void handleResult(JSONObject result);
+    public interface FeedHandler{
+        void handleFeedResult(JSONObject result);
     }
 }
 

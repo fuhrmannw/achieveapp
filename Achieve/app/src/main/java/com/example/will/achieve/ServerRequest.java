@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class ServerRequest {
 
-    private static final String IP = "http://localhost";
+    private static final String IP = "http://10.20.23.112";
     private static final String URL = IP + ":8080";
     private static String charset = "UTF-8";
 
@@ -43,12 +43,13 @@ public class ServerRequest {
             connection.setRequestProperty("Host", URL);
             connection.setUseCaches(false);
 
-            if(!get) {
+            if (!get) {
                 connection.setRequestMethod("POST");
                 connection.setDoOutput(true);//Sets POST
                 connection.setDoInput(true);
-
-                writeReqBody(connection, body);
+                if (body !=  null) {
+                    writeReqBody(connection, body);
+                }
             }else {
                 connection.setRequestMethod("GET");
             }
