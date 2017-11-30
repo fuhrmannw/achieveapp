@@ -30,6 +30,7 @@
                 android:id="@+id/friendsButton"
                 android:text="FRIENDS"
                 android:textSize="26sp"
+                android:onClick="toFriendsActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -37,16 +38,12 @@
                 android:id="@+id/profileButton"
                 android:text="PROFILE"
                 android:textSize="26sp"
+                android:onClick="toProfileActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/inputGoalText"
@@ -60,9 +57,6 @@
                 android:onClick="createPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
 
         <fragment
             android:id="@+id/post_list_fragment"

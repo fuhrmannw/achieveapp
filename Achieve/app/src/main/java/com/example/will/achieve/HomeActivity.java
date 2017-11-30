@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
         setContentView(R.layout.activity_home);
     }
 
-    public void createPost()
+    public void createPost(View v)
     {
         EditText et = (EditText) findViewById(R.id.inputGoalText);
         Post post = new Post(Global.getInstance().getFirstName(), Global.getInstance().getLastName(), et.getText().toString());
@@ -53,8 +53,8 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
 
     @Override
     public void onListFragmentInteraction(Post item) {
-        Intent toHomeIntent = new Intent(this, HomeActivity.class);
-        toHomeIntent.putExtra("PostId", item.getId());
-        startActivity(toHomeIntent);
+        Intent toPostIntent = new Intent(this, PostActivity.class);
+        toPostIntent.putExtra("PostId", item.getId());
+        startActivity(toPostIntent);
     }
 }

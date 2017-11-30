@@ -7,4 +7,62 @@
     android:layout_height="match_parent"
     tools:context="com.example.will.achieve.ProfileActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:text="HOME"
+            android:textSize="26sp"
+            android:onClick="toHomeActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/friendsButton"
+            android:text="FRIENDS"
+            android:textSize="26sp"
+            android:onClick="toFriendsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/profileButton"
+            android:text="PROFILE"
+            android:textSize="26sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/profile_list_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.example.will.achieve.ProfileListFragment"
+            tools:layout="@layout/fragment_profile_list">
+        </fragment>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>
