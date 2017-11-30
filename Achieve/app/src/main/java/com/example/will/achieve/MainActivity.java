@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.FitWindowsLinearLayout;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void gotoLogin() {
-        Intent toLoginIntent = new Intent(this, HomeActivity.class); //should be LoginActivity instead of MainActivity
+    public void gotoLogin(View view) {
+        Intent toLoginIntent = new Intent(this, HomeActivity.class); // TODO should be LoginActivity instead of MainActivity
         startActivity(toLoginIntent);
     }
 }

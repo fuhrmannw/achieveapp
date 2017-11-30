@@ -3,6 +3,8 @@ package com.example.will.achieve;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Post {
@@ -21,6 +23,17 @@ public class Post {
         this.post = post;
         this.likes = likes;
         this.numComments = comments;
+    }
+
+    public Post(JSONObject json){
+        try {
+            this.id = json.getInt("id");
+            this.poster = json.getString("title");
+            this.post = json.getString("post");
+            this.likes = json.getInt("likes");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getPoster()
