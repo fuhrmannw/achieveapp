@@ -66,7 +66,6 @@ public class MyFriendsListRecyclerViewAdapter extends RecyclerView.Adapter<MyFri
         public FriendHolder(View view) {
             super(view);
             mView = view;
-            friendNameView = (TextView)view.findViewById(R.id.friendName);
         }
 
         @Override
