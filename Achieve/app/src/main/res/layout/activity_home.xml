@@ -48,9 +48,8 @@
             android:id="@+id/post_list_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="android.app.ListFragment"
-            tools:layout="@layout/fragment_post_list">
-
+            android:name="com.example.will.achieve.PostListFragment"
+            tools:layout="@layout/fragment_postlist_list">
 
         </fragment>
 
