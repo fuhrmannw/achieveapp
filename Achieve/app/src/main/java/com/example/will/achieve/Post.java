@@ -55,4 +55,16 @@ public class Post {
     {
         return numComments;
     }
+
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("title", poster);
+            json.put("content", post);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
 }

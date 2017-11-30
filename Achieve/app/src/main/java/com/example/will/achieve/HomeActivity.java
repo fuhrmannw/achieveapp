@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        //transaction.replace(R.id.post_list_fragment, fragment);
+        // transaction.replace(R.id.post_list_fragment, fragment);
         transaction.commit();
     }
 

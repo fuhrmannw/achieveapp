@@ -22,8 +22,8 @@ public class Comment {
     {
         try {
             this.id = json.getInt("id");
-            this.poster = json.getString("title");
-            this.comment = json.getString("comment");
+            this.poster = json.getString("authorId");
+            this.comment = json.getString("content");
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -35,5 +35,14 @@ public class Comment {
 
     public String getComment() { return comment; }
 
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("content", comment);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
 
 }
