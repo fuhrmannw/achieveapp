@@ -104,7 +104,7 @@ public class FriendsListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFriendsFragmentInteraction(String item);
+        void onFriendsFragmentInteraction(Friend item);
         void setRecyclerView(RecyclerView v);
     }
 }
