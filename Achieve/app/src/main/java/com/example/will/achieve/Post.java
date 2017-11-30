@@ -29,7 +29,7 @@ public class Post {
         try {
             this.id = json.getInt("id");
             this.poster = json.getString("title");
-            this.post = json.getString("post");
+            this.post = json.getString("content");
             this.likes = json.getInt("likes");
         } catch(Exception e) {
             e.printStackTrace();
