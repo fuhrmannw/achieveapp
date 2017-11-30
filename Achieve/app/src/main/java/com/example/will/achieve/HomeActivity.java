@@ -1,6 +1,7 @@
 package com.example.will.achieve;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.will.achieve.AsyncTasks.GetFeedAsync;
 
@@ -27,42 +29,32 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        //fragment = new PostListFragment();
     }
 
-    public void toHomeFragment()
+    public void createPost()
     {
-        //fragment = new PostListFragment();
+        EditText et = (EditText) findViewById(R.id.inputGoalText);
+        Post post = new Post(Global.getInstance().getFirstName(), Global.getInstance().getLastName(), et.getText().toString());
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        // transaction.replace(R.id.post_list_fragment, fragment);
-        transaction.commit();
+        //TODO ERICA NEEDS THIS FOR SOMETHING
     }
 
-    public void toFriendsFragment()
+    public void toFriendsActivity()
     {
-        //fragment = new FriendsListFragment();
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        //transaction.replace(R.id.friends_list_fragment, fragment);
-        transaction.commit();
+        Intent toFriendsIntent = new Intent(this, FriendsListActivity.class);
+        startActivity(toFriendsIntent);
     }
 
-    public void toProfileFragment()
+    public void toProfileActivity()
     {
-        //fragment = new ProfileListFragment();
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        //transaction.replace(R.id.profile_list_fragment, fragment);
-        transaction.commit();
+        Intent toProfileIntent = new Intent(this, ProfileActivity.class);
+        startActivity(toProfileIntent);
     }
 
     @Override
     public void onListFragmentInteraction(Post item) {
-        //TODO
+        Intent toHomeIntent = new Intent(this, HomeActivity.class);
+        toHomeIntent.putExtra("PostId", item.getId());
+        startActivity(toHomeIntent);
     }
 }

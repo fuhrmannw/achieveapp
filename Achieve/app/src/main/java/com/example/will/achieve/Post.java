@@ -11,18 +11,26 @@ public class Post {
 
     public int id;
     public String poster;
+    public String posterFirstName;
+    public String posterLastName;
     public String post;
     public int likes;
     public int numComments;
     public ArrayList<String> comments;
 
-    public Post(int id, String poster, String post, int likes, int comments)
+    public Post(String poster, String post, int likes, int comments)
     {
-        this.id = id;
         this.poster = poster;
         this.post = post;
         this.likes = likes;
         this.numComments = comments;
+    }
+
+    public Post(String firstName, String lastName, String post)
+    {
+        this.posterFirstName = firstName;
+        this.posterLastName = lastName;
+        this.post = post;
     }
 
     public Post(JSONObject json){
@@ -35,6 +43,8 @@ public class Post {
             e.printStackTrace();
         }
     }
+
+    public int getId() { return id; }
 
     public String getPoster()
     {

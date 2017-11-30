@@ -43,6 +43,26 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/inputGoalText"
+                android:text="Create Goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/createGoalButton"
+                android:text="Submit Goal"
+                android:onClick="createPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
 
         <fragment
             android:id="@+id/post_list_fragment"
