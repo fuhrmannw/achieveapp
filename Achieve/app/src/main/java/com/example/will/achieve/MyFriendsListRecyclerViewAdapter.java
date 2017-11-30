@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import com.example.will.achieve.FriendsListFragment.OnListFragmentInteractionListener;
+
 
 /**
  * Created by Will3 on 11/30/2017.
@@ -41,7 +43,7 @@ public class MyFriendsListRecyclerViewAdapter extends RecyclerView.Adapter<MyFri
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    // TODO get this to compile  mListener.onListFragmentInteraction(holder.mFriend);
+                    mListener.onListFragmentInteraction(holder.mFriend);
                 }
             }
         });
@@ -59,10 +61,12 @@ public class MyFriendsListRecyclerViewAdapter extends RecyclerView.Adapter<MyFri
         public Friend mFriend;
         public String friend;
 
+        public TextView friendNameView;
+
         public FriendHolder(View view) {
             super(view);
             mView = view;
-            //TODO friend = (TextView)view.findViewById(R.id.friendName);
+            friendNameView = (TextView)view.findViewById(R.id.friendName);
         }
 
         @Override

@@ -16,7 +16,7 @@ public class Global {
 
     public ArrayList<Post> mProfileArrayList = new ArrayList<Post>();
 
-    public ArrayList<String> mFriendsList = new ArrayList<String>();
+    public ArrayList<Friend> mFriendsList = new ArrayList<Friend>();
 
     public ArrayList<Comment> mCommentArrayList = new ArrayList<Comment>();
 
@@ -46,7 +46,7 @@ public class Global {
 
     public ArrayList<Post> getProfileList() { return mProfileArrayList; }
 
-    public ArrayList<String> getFriendsList() { return mFriendsList; }
+    public ArrayList<Friend> getFriendsList() { return mFriendsList; }
 
     public ArrayList<Comment> getCommentArrayList() { return mCommentArrayList; }
 

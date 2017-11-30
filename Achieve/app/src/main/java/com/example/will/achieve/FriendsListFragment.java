@@ -67,7 +67,7 @@ public class FriendsListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<String> friends = Global.getInstance().getFriendsList();
+            List<Friend> friends = Global.getInstance().getFriendsList();
             Log.i("Friends", friends.size() + "");
             recyclerView.setAdapter(new MyFriendsListRecyclerViewAdapter(friends, mListener));
         }
