@@ -29,6 +29,10 @@
         </activity>
         <activity android:name=".Post">
         </activity>
+        <activity android:name=".Friend">
+        </activity>
+        <activity android:name=".Comment">
+        </activity>
     </application>
 
 </manifest>
