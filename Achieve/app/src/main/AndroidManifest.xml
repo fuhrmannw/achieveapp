@@ -28,6 +28,12 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
         </activity>
+        <activity android:name=".FriendsListActivity">
+        </activity>
+        <activity android:name=".ProfileActivity">
+        </activity>
+        <activity android:name=".PostActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -8,7 +8,13 @@ import java.util.ArrayList;
 
 public class Global {
 
+    public int userId;
+
     public String username;
+
+    public String firstName;
+
+    public String lastName;
 
     private static Global instance = null;
 
@@ -49,5 +55,11 @@ public class Global {
     public ArrayList<Friend> getFriendsList() { return mFriendsList; }
 
     public ArrayList<Comment> getCommentArrayList() { return mCommentArrayList; }
+
+    public String getUsername() { return username; }
+
+    public String getFirstName() {return firstName; }
+
+    public String getLastName() { return lastName; }
 
 }
