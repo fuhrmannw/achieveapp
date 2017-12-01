@@ -36,7 +36,7 @@ public class AddFriendAsync extends AsyncTask<Void, Void, Void>{
     @Override
     protected Void doInBackground(Void... params) {
         Log.i("CreatePostAsync", "Creating post");
-        ServerRequest req = new ServerRequest(body, "/post/create", false);
+        ServerRequest req = new ServerRequest(body, "/user/friends", false);
         req.sendRequest();
         return null;
     }

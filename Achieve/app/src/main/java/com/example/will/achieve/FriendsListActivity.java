@@ -32,6 +32,7 @@ public class FriendsListActivity extends AppCompatActivity implements FriendsLis
         String friendToAdd = et.getText().toString();
 
         new AddFriendAsync(friendToAdd, Global.getInstance().userId, friendList).execute();
+        et.setText("");
 
     }
 

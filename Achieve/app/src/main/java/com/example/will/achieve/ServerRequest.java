@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class ServerRequest {
 
-    private static final String IP = "http://10.20.23.112";
+    private static final String IP = "http://10.26.136.9";
     private static final String URL = IP + ":8080";
     private static String charset = "UTF-8";
 

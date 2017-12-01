@@ -58,7 +58,7 @@ public class PostListFragment extends Fragment implements GetFeedAsync.FeedHandl
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-        new GetFeedAsync(1, this).execute();
+        new GetFeedAsync(Global.getInstance().userId, this).execute();
     }
 
     @Override

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 public class Global {
 
-    public int userId = 1;
+    public  int userId = 0;
 
     public String username;
 
-    public String firstName = "Erica";
+    public String firstName;
 
-    public String lastName = "Clark";
+    public String lastName;
 
     private static Global instance = null;
 
