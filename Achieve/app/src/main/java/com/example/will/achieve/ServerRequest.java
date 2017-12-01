@@ -63,7 +63,7 @@ public class ServerRequest {
             }
 
             JSONObject newJson = new JSONObject(readRes(connection));
-            Log.i("ServerRequest", "Sending Request to " + newJson.toString());
+            Log.i("ServerRequest", "Recevied " + newJson.toString());
             return newJson;
         } catch(Exception e) {
             e.printStackTrace();
