@@ -7,19 +7,32 @@
     android:layout_height="match_parent"
     tools:context="com.example.will.achieve.PostActivity">
 
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/writeGoal"
+            android:text="Write a new Goal!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"/>
 
-    <fragment
-        android:id="@+id/profile_list_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_profile_list">
-    </fragment>
+        <Button
+            android:id="@+id/submitGoalButton"
+            android:text="Create"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:id="@+id/profile_list_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_profile_list">
+        </fragment>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
