@@ -36,7 +36,7 @@ public class MyFriendsListRecyclerViewAdapter extends RecyclerView.Adapter<MyFri
         Friend friend = mValues.get(position);
         holder.mFriend = friend;
         holder.friend = friend.getFriendName();
-
+        holder.friendNameView.setText(holder.friend);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class MyFriendsListRecyclerViewAdapter extends RecyclerView.Adapter<MyFri
         public FriendHolder(View view) {
             super(view);
             mView = view;
+            friendNameView = (TextView) view.findViewById(R.id.friendText);
         }
 
         @Override

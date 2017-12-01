@@ -30,6 +30,7 @@ public class Post {
     {
         this.posterFirstName = firstName;
         this.posterLastName = lastName;
+        this.poster = this.posterFirstName + " " + posterLastName;
         this.post = post;
     }
 

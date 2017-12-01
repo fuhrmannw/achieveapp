@@ -29,8 +29,13 @@ public class GetFriendListAsync extends AsyncTask<Void, Void, JSONObject> {
         return req.sendRequest();
     }
 
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
+        handler.handleFriendListResult(jsonObject);
+    }
+
     public interface FriendResultHandler {
-        void handleFriendListResult();
+        void handleFriendListResult(JSONObject result);
     }
 
 }

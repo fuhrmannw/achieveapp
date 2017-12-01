@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.will.achieve.AsyncTasks.CreatePostAsync;
 import com.example.will.achieve.AsyncTasks.GetFeedAsync;
 
 import org.json.JSONArray;
@@ -23,12 +24,14 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
 
     RecyclerView view;
 
-    Fragment fragment;
+    PostListFragment postListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        postListFragment = (PostListFragment) getSupportFragmentManager().findFragmentById(R.id.post_list_fragment);
     }
 
     public void createPost(View v)
@@ -36,8 +39,8 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
         Log.i("CreatePost", "Creating post");
         EditText et = (EditText) findViewById(R.id.inputGoalText);
         Post post = new Post(Global.getInstance().getFirstName(), Global.getInstance().getLastName(), et.getText().toString());
-
         //TODO ERICA NEEDS THIS FOR SOMETHING
+        new CreatePostAsync(post, Global.getInstance().userId, postListFragment).execute(); //TODO Refresh the page - add postlist as a handler
     }
 
     public void toFriendsActivity(View v)

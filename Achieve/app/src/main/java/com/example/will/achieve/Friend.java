@@ -21,7 +21,7 @@ public class Friend {
     public Friend(JSONObject json){
         try {
             this.id = json.getInt("id");
-            this.friendName = json.getString("friendName");
+            this.friendName = json.getString("firstName") + " " + json.getString("lastName");
         } catch(Exception e) {
             e.printStackTrace();
         }
