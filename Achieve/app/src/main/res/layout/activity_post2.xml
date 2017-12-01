@@ -7,18 +7,78 @@
     android:layout_height="match_parent"
     tools:context="com.example.will.achieve.PostActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <Button
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <!--<fragment-->
-        <!---->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
-    <!--</fragment>-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/poster"
+                android:text="Poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/post"
+                android:text="Post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/likes"
+                android:text="Likes: 0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/likeButton"
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:hint="Enter a new Comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:id="@+id/comment_list_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:name="com.example.will.achieve.CommentListFragment"
+            tools:layout="@layout/fragment_comment_list">
+        </fragment>
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
