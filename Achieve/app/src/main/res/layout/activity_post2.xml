@@ -16,8 +16,10 @@
         android:layout_height="wrap_content"/>
 
     <fragment
+        android:id="@+id/profile_list_fragment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_profile_list">
     </fragment>
 
 </android.support.constraint.ConstraintLayout>
