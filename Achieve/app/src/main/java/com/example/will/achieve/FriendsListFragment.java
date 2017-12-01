@@ -11,6 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.will.achieve.AsyncTasks.GetFriendListAsync;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,14 +25,14 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link com.example.will.achieve.FriendsListFragment.OnListFragmentInteractionListener}
  * interface.
  */
-public class FriendsListFragment extends Fragment {
+public class FriendsListFragment extends Fragment implements GetFriendListAsync.FriendResultHandler {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private com.example.will.achieve.FriendsListFragment.OnListFragmentInteractionListener mListener;
-
+    private RecyclerView recyclerView;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -61,15 +67,16 @@ public class FriendsListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<Friend> friends = Global.getInstance().getFriendsList();
-            Log.i("Friends", friends.size() + "");
-            recyclerView.setAdapter(new MyFriendsListRecyclerViewAdapter(friends, mListener));
+//            List<Friend> friends = Global.getInstance().getFriendsList();
+//            Log.i("Friends", friends.size() + "");
+//            recyclerView.setAdapter(new MyFriendsListRecyclerViewAdapter(friends, mListener));
+            new GetFriendListAsync(this, Global.getInstance().userId).execute();
         }
         return view;
     }
@@ -92,6 +99,25 @@ public class FriendsListFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void handleFriendListResult(JSONObject result) {
+        if(result != null) {
+            Log.i("Result", result.toString());
+            try {
+                JSONArray arr = result.getJSONArray("friends");
+                List<Friend> friends = new ArrayList<>();
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject json = arr.getJSONObject(i);
+                    friends.add(new Friend(json));
+                }
+                MyFriendsListRecyclerViewAdapter adapter = new MyFriendsListRecyclerViewAdapter(friends, mListener);
+                recyclerView.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -105,6 +131,5 @@ public class FriendsListFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Friend item);
-        void setRecyclerView(RecyclerView v);
     }
 }

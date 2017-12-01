@@ -30,11 +30,11 @@ public class GetFeedAsync extends AsyncTask<Void, Void, JSONObject> {
     }
 
     @Override
-    protected void onPostExecute(JSONObject result){
+    protected void onPostExecute(JSONObject result) {
         handler.handleFeedResult(result);
     }
 
-    public interface FeedHandler{
+    public interface FeedHandler {
         void handleFeedResult(JSONObject result);
     }
 }

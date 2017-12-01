@@ -30,6 +30,7 @@ public class Post {
     {
         this.posterFirstName = firstName;
         this.posterLastName = lastName;
+        this.poster = this.posterFirstName + " " + posterLastName;
         this.post = post;
     }
 
@@ -64,5 +65,17 @@ public class Post {
     public int getNumComments()
     {
         return numComments;
+    }
+
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("title", poster);
+            json.put("content", post);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 }

@@ -3,7 +3,7 @@ package com.example.will.achieve;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PostActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity implements CommentListFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,4 +12,8 @@ public class PostActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onListFragmentInteraction(Comment item) {
+        // Nothing
+    }
 }

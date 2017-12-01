@@ -44,7 +44,6 @@
 
 
         </LinearLayout>
-
             <EditText
                 android:id="@+id/inputGoalText"
                 android:text="Create Goal"

@@ -109,7 +109,6 @@ public class CommentListFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Comment item);
-        void setRecyclerView(RecyclerView v);
     }
 
 
