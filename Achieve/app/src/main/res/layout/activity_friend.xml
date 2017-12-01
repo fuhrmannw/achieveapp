@@ -7,39 +7,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.will.achieve.Friend">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/friendText"
+        android:text="Friend1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/addFriend"
-                android:text="Friends Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:id="@+id/addFriendButton"
-                android:text="ADD"
-                android:onClick="addFriend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <fragment
-            android:id="@+id/friends_list_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.example.will.achieve.FriendsListFragment"
-            tools:layout="@layout/fragment_friends_list">
-        </fragment>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 
 
 </android.support.constraint.ConstraintLayout>

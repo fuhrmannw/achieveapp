@@ -7,4 +7,71 @@
     android:layout_height="match_parent"
     tools:context="com.example.will.achieve.FriendsListActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toHomeActivity"
+                android:text="HOME"
+                android:textSize="26sp"/>
+
+            <Button
+                android:id="@+id/friendsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FRIENDS"
+                android:textSize="26sp"/>
+
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toProfileActivity"
+                android:text="PROFILE"
+                android:textSize="26sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/addFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friends Name"/>
+
+            <Button
+                android:id="@+id/addFriendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addFriend"
+                android:text="ADD"/>
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/friends_list_fragment"
+            android:name="com.example.will.achieve.FriendsListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_friends_list">
+        </fragment>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

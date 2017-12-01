@@ -30,6 +30,7 @@
                 android:id="@+id/friendsButton"
                 android:text="FRIENDS"
                 android:textSize="26sp"
+                android:onClick="toFriendsActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -37,13 +38,13 @@
                 android:id="@+id/profileButton"
                 android:text="PROFILE"
                 android:textSize="26sp"
+                android:onClick="toProfileActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
 
         </LinearLayout>
-
-
+        
             <EditText
                 android:id="@+id/inputGoalText"
                 android:text="Create Goal"
@@ -57,9 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 81bba0db21a208d471079b07afffc99e17bd5a12
         <fragment
             android:id="@+id/post_list_fragment"
             android:layout_width="match_parent"
