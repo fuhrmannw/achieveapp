@@ -30,6 +30,7 @@ public class CommentListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private CommentListFragment.OnListFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -65,15 +66,15 @@ public class CommentListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<Comment> comments = Global.getInstance().getCommentArrayList();
-            Log.i("Comments", comments.size() + "");
-            recyclerView.setAdapter(new MyCommentListRecyclerViewAdapter(comments, mListener));
+//            List<Comment> comments = Global.getInstance().getCommentArrayList();
+//            Log.i("Comments", comments.size() + "");
+//            recyclerView.setAdapter(new MyCommentListRecyclerViewAdapter(comments, mListener));
         }
         return view;
     }
@@ -94,6 +95,10 @@ public class CommentListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setData(List<Comment> comments) {
+        recyclerView.setAdapter(new MyCommentListRecyclerViewAdapter(comments, mListener));
     }
 
     /**

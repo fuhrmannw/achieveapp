@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.will.achieve.AsyncTasks.CreatePostAsync;
+import com.example.will.achieve.AsyncTasks.GetUsersProjects;
+
 public class ProfileActivity extends AppCompatActivity implements PostListFragment.OnListFragmentInteractionListener {
 
     RecyclerView view;
@@ -16,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity implements PostListFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         TextView tv = (TextView) findViewById(R.id.profileUsername);
-        tv.setText(Global.getInstance().getFirstName() + " " + Global.getInstance().getLastName() + " " + Global.getInstance().getUsername());
+        tv.setText(Global.getInstance().getFirstName() + " " + Global.getInstance().getLastName());
     }
 
     public void toFriendsActivity(View v)
@@ -33,15 +36,9 @@ public class ProfileActivity extends AppCompatActivity implements PostListFragme
 
     @Override
     public void onListFragmentInteraction(Post item) {
-        Intent toHomeIntent = new Intent(this, HomeActivity.class);
-        toHomeIntent.putExtra("PostId", item.getId());
-        startActivity(toHomeIntent);
+        Intent toPostIntent = new Intent(this, PostActivity.class);
+        toPostIntent.putExtra("PostId", item.getId());
+        startActivity(toPostIntent);
     }
-
-
-
-
-
-
 
 }

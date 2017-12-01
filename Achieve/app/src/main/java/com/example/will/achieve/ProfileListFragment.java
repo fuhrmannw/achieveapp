@@ -12,6 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.will.achieve.AsyncTasks.GetUsersProjects;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,12 +29,13 @@ import java.util.List;
  * Use the {@link ProfileListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileListFragment extends Fragment {
+public class ProfileListFragment extends Fragment implements GetUsersProjects.PostHandler {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private RecyclerView recyclerView;
     private PostListFragment.OnListFragmentInteractionListener mListener;
 
     /**
@@ -65,15 +72,16 @@ public class ProfileListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<Post> posts = Global.getInstance().getProfileList();
-            Log.i("Posts", posts.size() + "");
-            recyclerView.setAdapter(new MyPostListRecyclerViewAdapter(posts, mListener));
+//            List<Post> posts = Global.getInstance().getProfileList();
+//            Log.i("Posts", posts.size() + "");
+//            recyclerView.setAdapter(new MyPostListRecyclerViewAdapter(posts, mListener));
+            new GetUsersProjects(Global.getInstance().userId, this).execute();
         }
         return view;
     }
@@ -96,6 +104,24 @@ public class ProfileListFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void handlePostResult(JSONObject result) {
+        if(result != null) {
+            Log.i("Result", result.toString());
+            try {
+                JSONArray arr = result.getJSONArray("posts");
+                List<Post> posts = new ArrayList<>();
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject json = arr.getJSONObject(i);
+                    posts.add(new Post(json));
+                }
+                MyProfileListRecyclerViewAdapter adapter = new MyProfileListRecyclerViewAdapter(posts, mListener);
+                recyclerView.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -109,7 +135,5 @@ public class ProfileListFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Post item);
-
-        void setRecyclerView(RecyclerView v);
     }
 }

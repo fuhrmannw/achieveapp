@@ -1,6 +1,7 @@
 package com.example.will.achieve;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class MyCommentListRecyclerViewAdapter extends RecyclerView.Adapter<MyCom
     @Override
     public MyCommentListRecyclerViewAdapter.CommentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_post, parent, false);
+                .inflate(R.layout.activity_comment, parent, false);
         return new MyCommentListRecyclerViewAdapter.CommentHolder(view);
     }
 
@@ -66,6 +67,8 @@ public class MyCommentListRecyclerViewAdapter extends RecyclerView.Adapter<MyCom
             mView = view;
             commenter = (TextView) view.findViewById(R.id.commenterName);
             commentText = (TextView) view.findViewById(R.id.commentText);
+            Log.i("Commenter", commenter + "");
+            Log.i("Commenter", commentText + "");
         }
 
         @Override

@@ -23,6 +23,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity implements PostListFragment.OnListFragmentInteractionListener {
 
     RecyclerView view;
+    EditText newPost;
 
     PostListFragment postListFragment;
 
@@ -32,15 +33,18 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
         setContentView(R.layout.activity_home);
 
         postListFragment = (PostListFragment) getSupportFragmentManager().findFragmentById(R.id.post_list_fragment);
+        newPost = (EditText) findViewById(R.id.inputGoalText);
     }
 
     public void createPost(View v)
     {
         Log.i("CreatePost", "Creating post");
-        EditText et = (EditText) findViewById(R.id.inputGoalText);
-        Post post = new Post(Global.getInstance().getFirstName(), Global.getInstance().getLastName(), et.getText().toString());
-        //TODO ERICA NEEDS THIS FOR SOMETHING
-        new CreatePostAsync(post, Global.getInstance().userId, postListFragment).execute(); //TODO Refresh the page - add postlist as a handler
+        String text = newPost.getText().toString();
+        if(!text.equals("")) {
+            Post post = new Post(Global.getInstance().getFirstName(), Global.getInstance().getLastName(), text);
+            newPost.setText("");
+            new CreatePostAsync(post, Global.getInstance().userId, postListFragment).execute(); //TODO Refresh the page - add postlist as a handler
+        }
     }
 
     public void toFriendsActivity(View v)

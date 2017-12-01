@@ -4,7 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.will.achieve.AsyncTasks.LikePostAsync;
 
 import java.util.List;
 
@@ -37,6 +40,16 @@ public class MyProfileListRecyclerViewAdapter extends RecyclerView.Adapter<MyPro
         holder.author.setText(post.getPoster());
         holder.likes.setText("Likes: " + post.getLikes());
 
+        holder.likesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.post.likes += 1;
+                holder.likes.setText("Likes: " + holder.post.getLikes());
+                new LikePostAsync(holder.post.id).execute();
+            }
+        });
+
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +72,7 @@ public class MyProfileListRecyclerViewAdapter extends RecyclerView.Adapter<MyPro
         public final TextView content;
         public final TextView author;
         public final TextView likes;
+        public final Button likesBtn;
 
         public Post post;
 
@@ -68,6 +82,7 @@ public class MyProfileListRecyclerViewAdapter extends RecyclerView.Adapter<MyPro
             content = (TextView) view.findViewById(R.id.post);
             author = (TextView) view.findViewById(R.id.poster);
             likes = (TextView) view.findViewById(R.id.likes);
+            likesBtn = (Button) view.findViewById(R.id.likeButton);
         }
 
         @Override

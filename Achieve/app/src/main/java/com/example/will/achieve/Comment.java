@@ -9,12 +9,13 @@ public class Comment {
 
     public int id;
     public String poster;
+    public int authorId;
     public String comment;
 
-    public Comment(int id, String poster, String comment)
+    public Comment(String poster, int authorId, String comment)
     {
-        this.id = id;
         this.poster = poster;
+        this.authorId = authorId;
         this.comment = comment;
     }
 
@@ -22,7 +23,7 @@ public class Comment {
     {
         try {
             this.id = json.getInt("id");
-            this.poster = json.getString("authorId");
+            this.poster = json.getString("authorId");//TODO
             this.comment = json.getString("content");
         } catch(Exception e) {
             e.printStackTrace();
@@ -38,6 +39,7 @@ public class Comment {
     public JSONObject toJSONObject() {
         JSONObject json = new JSONObject();
         try {
+            json.put("authorId", authorId);
             json.put("content", comment);
         } catch (Exception e) {
             e.printStackTrace();
