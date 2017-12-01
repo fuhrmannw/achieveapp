@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity implements PostListFragment.OnListFragmentInteractionListener {
 
@@ -14,6 +15,8 @@ public class ProfileActivity extends AppCompatActivity implements PostListFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        TextView tv = (TextView) findViewById(R.id.profileUsername);
+        tv.setText(Global.getInstance().getFirstName() + " " + Global.getInstance().getLastName() + " " + Global.getInstance().getUsername());
     }
 
     public void toFriendsActivity(View v)

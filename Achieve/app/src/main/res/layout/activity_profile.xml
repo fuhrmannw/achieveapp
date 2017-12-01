@@ -43,6 +43,12 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/profileUsername"
+            android:text="NAME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <fragment
             android:id="@+id/profile_list_fragment"
             android:layout_width="match_parent"
