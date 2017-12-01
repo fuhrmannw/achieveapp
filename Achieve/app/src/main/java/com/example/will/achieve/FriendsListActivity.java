@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 
 public class FriendsListActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class FriendsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends_list);
     }
 
-    public void addFriend()
+    public void addFriend(View v)
     {
         EditText et = (EditText) findViewById(R.id.addFriend);
         String friendToAdd = et.getText().toString();
@@ -27,13 +28,13 @@ public class FriendsListActivity extends AppCompatActivity {
         //TODO ERICA NEEDS THIS
     }
 
-    public void toHomeActivity()
+    public void toHomeActivity(View v)
     {
         Intent toHomeIntent = new Intent(this, HomeActivity.class);
         startActivity(toHomeIntent);
     }
 
-    public void toProfileFragment()
+    public void toProfileFragment(View v)
     {
         Intent toProfileIntent = new Intent(this, ProfileActivity.class);
         startActivity(toProfileIntent);

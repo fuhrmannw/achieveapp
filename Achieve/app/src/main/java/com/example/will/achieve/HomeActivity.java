@@ -39,13 +39,13 @@ public class HomeActivity extends AppCompatActivity implements PostListFragment.
         //TODO ERICA NEEDS THIS FOR SOMETHING
     }
 
-    public void toFriendsActivity()
+    public void toFriendsActivity(View v)
     {
         Intent toFriendsIntent = new Intent(this, FriendsListActivity.class);
         startActivity(toFriendsIntent);
     }
 
-    public void toProfileActivity()
+    public void toProfileActivity(View v)
     {
         Intent toProfileIntent = new Intent(this, ProfileActivity.class);
         startActivity(toProfileIntent);

@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Post p = new Post(1, "Will", "Sure Dude", 10, 4);
-        Post o = new Post(2, "Erica", "Whoops", 11, 5);
-        Post s = new Post(3, "Melanie", "Bet", 12, 6);
-        Post t = new Post(4, "Michael", "WHAT", 13, 7);
+        Post p = new Post("Will", "Sure Dude", 10, 4);
+        Post o = new Post("Erica", "Whoops", 11, 5);
+        Post s = new Post("Melanie", "Bet", 12, 6);
+        Post t = new Post("Michael", "WHAT", 13, 7);
 
         Global.getInstance().addToPostList(p);
         Global.getInstance().addToPostList(o);
