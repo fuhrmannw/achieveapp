@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void gotoLogin(View view) {
-        Intent toLoginIntent = new Intent(this, HomeActivity.class); // TODO should be LoginActivity instead of MainActivity
+        Intent toLoginIntent = new Intent(this, GoogleSignin.class); // TODO should be LoginActivity instead of MainActivity
         startActivity(toLoginIntent);
     }
 }

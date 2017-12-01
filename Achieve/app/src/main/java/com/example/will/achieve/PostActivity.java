@@ -89,6 +89,8 @@ public class PostActivity extends AppCompatActivity implements CommentListFragme
                 poster.setText(postJson.getString("title"));
                 post = new Post(postJson);
 
+                likes.setText("Likes: " + post.getLikes());
+
                 JSONArray arr = result.getJSONArray("comments");
                 List<Comment> comments = new ArrayList<>();
                 for (int i = 0; i < arr.length(); i++) {

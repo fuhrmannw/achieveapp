@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "547625315394",
+    "project_id": "firebase-achieve"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547625315394:android:80b2ab2659ecef9f",
+        "android_client_info": {
+          "package_name": "com.example.will.achieve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547625315394-q1sctc5kvenis7n0gb850salf3uml8dc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.will.achieve",
+            "certificate_hash": "8ad7386b39e7b290777390e5394c14674cc1b5a9"
+          }
+        },
+        {
+          "client_id": "547625315394-s8sufutr0ijcpfoj6etsgjtkgf5s6a6c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ2zpC7pfkoLXSpKbHDg4ob9wEMLoS1wA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
